@@ -1,0 +1,35 @@
+---
+sidebar_position: 2
+---
+
+# Helpers
+We have some helpers that make it easier to test your code. They are built on top of `jest` and `react-testing-library`
+and make it easier to reuse some normal behavior that we have on tests. You can check them on `src/config/testUtils` directory.
+
+The most common helpers to use are the following:
+### expects helpers
+- **expectTextToBeInTheDocument** - used to check if a text is rendered in the document.
+- **expectTextNotToBeInTheDocument** - used to check if a text is not rendered in the document.
+- **expectImageToBeInTheDocument** - used to check if an image is rendered in the document. (based on its alt attribute)
+- **expectLogErrorToHaveBeenCalled** - used to check if the logError function has been called. (This function is used to log errors to sentry. We commonly test this cases when dealing with sad paths)
+- **expectLogEventToHaveBeenCalledWith** - used to check if the logEvent function has been called with the expected arguments. (This function is used to log events to firebase analytics. We commonly use this helper to check if a page logs the event it is meant to log)
+- **expectPageToNavigateTo** - used to check if the page navigates to the expected url with correct params. (This checks if the navigateTo function is called with correct arguments, simulating that the page has navigated to the expected url)
+
+### test helpers
+- **renderComponent** - used to render a component. It is the main way to render a component in tests, since it already
+puts all the contexts and navigation resources that the component rendered would need.
+With it you can mock the context values. For example, you can pass:
+```
+renderComponent(<Component />, {
+  walletProviderValue: {
+    wallet: "0xFFFF",
+  },
+});
+```
+To mock the wallet context and use the wallet value "0xFFFF" instead of the real one.
+All the options and the types are already defined in that component. Feel free to check on other tests as well to see how it is used.
+
+- **clickOn** - used to click on something in the document. You can pass a string that represents the text of the thing you want to click (like a button)
+or you can pass a component or a query directly.
+
+If you see any other helper that could be common on our application, feel free to send a PR to add them.

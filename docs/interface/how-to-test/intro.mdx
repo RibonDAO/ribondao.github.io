@@ -1,0 +1,17 @@
+---
+sidebar_position: 1
+---
+
+# Tools used to test
+We are currently using [Jest](https://facebook.github.io/jest/) and [React Testing Library](https://testing-library.com/) to test our components.
+Feel free to see their docs to know more about them. In the next sections we will cover the main ways to test our interface.
+
+## Components
+
+We have a component directory in `src/components`. There you should create only components that receive props and have a state.
+They are not coupled to any hooks, contexts or application related code.
+You can think of this `components` directory as a library that could be copied to any other project and still work.
+
+There you normally test the behavior of your component. For example, for a `<Button />` component we could test if the props passed to it are showed in the screen
+and if it calls the right function when it is pressed. You can check the test for the `<Button />` component in the `src/components/atomics/Button/index.test.tsx` file in the project.
+It is a good reference of what to test on components.
