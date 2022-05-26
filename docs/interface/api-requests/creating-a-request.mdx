@@ -1,0 +1,19 @@
+---
+sidebar_position: 2
+---
+
+# Creating a request
+In order to create a new request, you can use our cli generators. You can use on the terminal: `yarn generate`.
+Then you should select the `service API` option and give it a name, such as `users`.
+It will create a new folder in the `src/services/api` folder with the request and its tests.
+
+You should normally use the request helpers to create the request. They are:
+- apiGet - used to make a GET request
+- apiPost - used to make a POST request
+- apiPut - used to make a PUT request
+- apiDelete - used to make a DELETE request
+
+They can be imported from the index file of `src/services/api`
+
+You normally will want to test if the request calls axios api with correct params (such as url, headers and params).
+A good file to look for an example is the following: `src/services/api/nonProfitsApi/index.test.ts`
