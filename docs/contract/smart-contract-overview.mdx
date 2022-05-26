@@ -1,0 +1,104 @@
+---
+sidebar_position: 2
+---
+
+# Smart Contract Overview
+
+## Functions
+All write functions emit an event which is traked on the graph to easealy query this information.
+
+### Constructor
+
+```
+  constructor(
+    address _donationToken,
+    address _integrationCouncil,
+    address _nonProfitCouncil
+  ) {
+    donationToken = IERC20(_donationToken);
+    integrationCouncil = _integrationCouncil;
+    nonProfitCouncil = _nonProfitCouncil;
+  }
+```
+
+To deploy the contract you need to send the following parameters:
+
+#### Parameters:
+
+| Name                | Type    | Description                                                    |
+| :------------------ | :------ | :------------------------------------------------------------- |
+| `donationToken`     | IERC20  | The contract address of the Donation Token, example USDC       |
+| `integrationCouncil`| address | The integration council multsig wallet                         |
+| `nonProfitCouncil`  | address | The non profit council multsig wallet                          |
+
+### addNonProfitToWhitelist
+:::tip Who uses this function
+Non Profit Council
+:::
+
+```
+  function addNonProfitToWhitelist(address _nonProfit) public {
+    require(msg.sender == nonProfitCouncil, "You are not non profit council.");
+
+    nonProfits[_nonProfit] = true;
+
+    emit NonProfitAdded(_nonProfit);
+  }
+```
+
+Just the non profit council multsig wallet can call this function.  
+This function add a non profit to the whitelist map as true, this means that this non profic can receive the project funds.  
+
+#### Parameters:
+
+| Name                | Type    | Description                      |
+| :------------------ | :------ | :------------------------------- |
+| `nonProfit`         | address  | The non profit wallet address   |
+
+### addNonProfitToWhitelist
+:::tip Who uses this function
+Non Profit Council
+:::
+
+```
+  function addNonProfitToWhitelist(address _nonProfit) public {
+    require(msg.sender == nonProfitCouncil, "You are not non profit council.");
+
+    nonProfits[_nonProfit] = true;
+
+    emit NonProfitAdded(_nonProfit);
+  }
+```
+
+Just the non profit council multsig wallet can call this function.  
+This function remove a non profit to the whitelist map setting then as false, this means that this non profic can not receive the project funds.   
+
+#### Parameters:
+
+| Name                | Type    | Description                      |
+| :------------------ | :------ | :------------------------------- |
+| `nonProfit`         | address  | The non profit wallet address   |
+
+### addDonationPoolBalance
+:::tip Who uses this function
+Promoter
+:::
+```
+  function addDonationPoolBalance(uint256 _amount) public {
+    require(_amount > 0, "Amount should be bigger than 0");
+
+    donationToken.safeTransferFrom(msg.sender, address(this), _amount);
+    donationPoolBalance += _amount;
+
+    emit PoolBalanceIncreased(msg.sender, _amount);
+  }
+```
+
+Anyone can call this function.  
+This function send the donation token from the promoter to the contract and increases the donation pool.
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `amount`            | unit    | The amount of donation tokens that will be sent     |

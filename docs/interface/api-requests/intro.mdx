@@ -1,0 +1,13 @@
+---
+sidebar_position: 1
+---
+
+# Introduction
+Our api requests are located inside `src/services/api` directory. There we have an index file that makes the initial configuration of our API requests.
+We are currently using [Axios](https://github.com/axios/axios) library to make the requests.
+
+We use some interceptors in the requests. All of our requests are snake cased before sending them to the server, and they are camel cased when receiving information from the server.
+This is done in order to follow each language's conventions (camel case for typescript and snake case for Ruby).
+
+The following sections will have further explanation about how to make requests and things to make them more reusable
+in the whole app.
