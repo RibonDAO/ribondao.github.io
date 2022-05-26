@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+---
+
+# Api hooks
+In order to organize better our requests and reuse them in multiple pages, it is a good practice to create
+api hooks that encapsulate those requests (see how to create them on the previous section).
+
+These hooks are located at `src/hooks/apiHooks`
+
+## The useApi hook
+We created an useApi hook that uses `react-query` and has some pre-definitions that makes easier to cache and make requests inside hooks.
+Normally you will encapsulate your request inside the useApi hook, and return the data among other functions
+that a component/page would need to consume this api.
+
+You can use it as following:
+```
+const { data: someNameToYourData, isLoading, refetch } = useApi<TypeReturnedFromTheRequest>({
+    key: "keyToCacheTheRequest",
+    fetchMethod: () => {
+      return someMethodThatCallsTheApi # created on previous section
+    }
+});
+```
+
+This hook exposes as well the `isLoading` boolean, which tells if the request is still loading (useful to show loading states in the page) and `refecth` method, that can be called again
+in the page to force the request to be made again.
+
+A good example of this kind of hook is the `src/hooks/apiHooks/useNonProfits/index.ts` hook. It gets information about the
+non-profits of the app and returns it to the pages.
