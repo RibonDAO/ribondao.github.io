@@ -1,0 +1,172 @@
+---
+sidebar_position: 5
+---
+
+# Styled Components
+
+## Global Styles
+
+We use styled-components to style all of our components. For that, we have a styles folder,
+in the root of our project, to define the global styles of our application.
+
+The first and second files we have here are globalStyle.ts and normalize.ts. That define the main styles
+for our pages (#root, html, ...) and also for our atomic elements, such as button and input.
+
+Another very important file is the theme.ts, in which we define variables for the colors of our application; and also for the fonts
+and breakpoints to use media-queries.
+
+```jsx title="src/styles/theme.ts"
+const theme: ThemeType = {
+  grid: {},
+  border: {},
+  font: {
+    family: "Lato",
+    light: 300,
+    normal: 400,
+    bold: 600,
+    sizes: {},
+  },
+  colors: {
+    ribonBlue: "#00CDB4",
+    ribonBlack: "#185669",
+    darkGray: "#82AABE",
+    lightGray: "#D9E5EB",
+    gray: "#C4C4C4",
+    bgGray: "#FBFBFD",
+    lgRed: "#EF5350",
+    eaBlue: "#00B5BF",
+    phcYellow: "#FFB300",
+    sciGreen: "#6DC100",
+    ribonWhite: "#FFFFFF",
+    phcYellow2: "#FF8F00",
+    ribonShadow: "rgba(24, 86, 105, 0.15)",
+    modalBackground: "rgba(24, 86, 105, 0.6)",
+  },
+  spacings: {},
+  breakpoints: {
+    mobile: "0px",
+    mobileMedium: "374px",
+    pad: "600px",
+    desktop: "1024px",
+  },
+};
+```
+
+Finally, we have the typography.ts file, that defines the size of the text elements in our
+application. If you want to print a text with font-size = 14, you should use a h4, for example.
+
+```jsx title="src/styles/typography.ts"
+const typography = css`
+  body {
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  span {
+    color: #185669;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 1.6;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h4 {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  h5 {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  span {
+    font-size: 12px;
+    line-height: 1;
+  }
+`;
+```
+
+## Components
+
+### Atomics
+
+In our components folder, we have two other important folders. The first one in the atomics folder, in which
+we keep the atomic components, like buttons, inputs, etc.
+
+```jsx title="Example - src/components/atomics/Divider"
+export type Props = {
+  text?: string,
+  color?: string,
+  textColor?: string,
+  width?: string,
+  margin?: string,
+};
+
+function Divider({
+  text,
+  color = ribonWhite,
+  textColor = ribonWhite,
+  width = "100%",
+  margin = "0px",
+}: Props): JSX.Element {
+  return (
+    <S.Container>
+      <S.Divider
+        textColor={textColor}
+        color={color}
+        width={width}
+        margin={margin}
+        className="separator"
+      >
+        {text}
+      </S.Divider>
+    </S.Container>
+  );
+}
+```
+
+### Moleculars
+
+The second one in the molecules folder, in which we
+keep the molecules, like the header, the footer, the main content, etc.
+
+```jsx title="Example - src/components/atomics/Divider"
+export type Props = {
+  image: string,
+  imageAlt?: string,
+};
+
+function CardRoundImage({ image, imageAlt }: Props): JSX.Element {
+  return (
+    <S.Container>
+      <S.CenterImage src={image} alt={imageAlt} />
+    </S.Container>
+  );
+}
+```
