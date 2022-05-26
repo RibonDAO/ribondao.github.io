@@ -1,0 +1,31 @@
+---
+sidebar_position: 2
+---
+
+# Folders Structure
+
+We have two important files in the root folder of the project:
+
+- schema.graphql: here the entities of the subgraph are defined with their attributes and types
+
+- subgraph.yaml: here are all the contract and subgraph settings, such as the path to the schema file defined and the data sources: contract address, network information, ABI, events, entities and the mapping file used to create the wasm executable
+
+## ABI
+
+Here we keep the ABI (Application Binary Interface) file of the contract, the ABI defines the structures and methods defined in the contract that the subgraph can access.
+
+## Build
+
+Here are the subgraph build files, composed of a folder with information about the contract's ABI, an executable and the files that defines the schema (schema.graphql) and the subgraph informations (subgraph.yaml):
+
+## Generated
+
+Before deploying the subgraph, you must run the "yarn codegen" command which will generate an AssemblyScript class for the contract ABI defined in subgraph.yaml. Two files are generated:
+
+- Ribon.ts: this file allows the methods of the contract to be read and called and generates a class for each contract event to allow easy access to the parameters, the block and the transaction that issued the event.
+
+- schema.ts: A class is generated for each entity and its read and write methods.
+
+## src
+
+Here we keep the subgraph mapping file, responsible for transforming Ethereum data into entities defined in the schema. We create a function for each event handler defined in subgraph.yaml, this is where the entity data is actually populated by calling its read and write methods.
