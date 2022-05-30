@@ -9,7 +9,7 @@ const config = {
   title: 'Ribon',
   tagline: 'Donation protocol',
   url: 'https://dapp.ribon.io',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon-ribon.png',
@@ -44,7 +44,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-          'https://ribon.io/blog-en/',
+            'https://ribon.io/blog-en/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -69,7 +69,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: 'https://ribon.io/blog-en/', label: 'Blog', position: 'left'},
+          { to: 'https://ribon.io/blog-en/', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/RibonDAO/docs',
             label: 'GitHub',
