@@ -65,11 +65,16 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'what-is-ribon',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Get Started',
           },
           { to: 'https://ribon.io/blog-en/', label: 'Blog', position: 'left' },
+          {
+            href: 'https://ribon.io/wp-content/uploads/2021/08/Protocolo-Ribon-Whitepaper-v.0.2.pdf',
+            label: 'Whitepaper',
+            position: 'right',
+          },
           {
             href: 'https://github.com/RibonDAO/docs',
             label: 'GitHub',
