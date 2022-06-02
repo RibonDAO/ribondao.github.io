@@ -1,12 +1,35 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Tools
+# Intro to our tools
 
-## Sentry
+Alphabetically, so it's easier to find what you're looking for  :wink:
 
-We use Sentry as a tool for managing errors in our app. You can check it out at this [link](https://sentry.io/auth/login/ribon/). You can only be added to it by e-mail, so you would have to ask someone to include you there. 
+## Analytics
+
+Here we use Analytics as most people do: to analyze data and get insights that help us make more informed decisions. You can learn more about it [here](https://analytics.google.com/analytics/web/provision/#/provision). 
+
+At Ribon, we use events to keep track of users interactions with our app. On the frontend you will see many `logEvent("someEvent")` on the pages. 
+When using this, make sure each event fires only once (using `console.log()` to test it may be a good idea). 
+
+To access the data related to that event, you can enter the Firebase project of the app you want to check then click on the "events" option on the bar to the left.
+
+## AWS
+
+Amazon Web Services (AWS) is a well known cloud platform. 
+Here, we use EC2 for hosting servers that run the application's back-end (currently on Ruby on Rails), as well as some Lambda Functions in NodeJS that are used for interacting with our contract on the blockchain. 
+In addition, we use Code Pipeline for our continuous deploy (CD), and Elastic Beanstalk to join the database with the servers and host our back-end API. 
+
+If you are part of the Ribon Team, check out our Basecamp in Developers > Docs & Files > Infra > AWS. There you will be able to find Nicholas's tutorial for using these services.
+
+## Firebase
+
+Firebase is a Google service that allows for several off-the-shelf solutions, such as analytics, performance measurements, authentication, etc. Here at Ribon we use it mainly for analytics and hosting our front-end.
+
+## GraphQL
+
+[GraphQL](https://graphql.org) is a query language for APIs. We use it in order to make queries to [TheGraph](https://thegraph.com/en/), the API we use to interact with our smart contract.
 
 ## Hopscotch
 
@@ -14,4 +37,16 @@ This is a tool similar to Insomnia and Postman, but with a bonus of being easily
 
 ## Metamask
 
-As a Web3 startup based on Polygon, an EVM-compatible sidechain, we use Metamask as our wallet provider, so you may want to install it (if you haven't already) on this [link](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn).
+In case you are not so familiar with cryptocurrencies, you may want to know that there is a digital wallet where we people keep their tokens, such as ETH, BTC, USDT, etc. As a Web3 startup based on Polygon, an EVM-compatible sidechain, we use Metamask as our wallet provider, so you may want to install it (if you haven't already) on this [link](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn).
+
+## Redis
+
+Redis is a datastore. Here, we'll be using it for cache for the back-end. You may think about it as a kind of RAM memory we use externally, for quickly getting volatile data that are not sensible to losses. To learn more about it, check this [link](https://redis.io).
+
+## Sendgrid
+
+Sendgrid is API used for sending e-mails. You can check their docs [here](https://docs.sendgrid.com/pt-br/).
+
+## Sentry
+
+We use Sentry as a tool for managing errors in our app. You can check it out at this [link](https://sentry.io/auth/login/ribon/). You can only be added to it by e-mail, so you would have to ask someone to include you there. 
