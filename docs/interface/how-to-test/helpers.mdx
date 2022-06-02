@@ -29,6 +29,17 @@ renderComponent(<Component />, {
 To mock the wallet context and use the wallet value "0xFFFF" instead of the real one.
 All the options and the types are already defined in that component. Feel free to check on other tests as well to see how it is used.
 
+- **renderHook** - used to render a hook. It is the main way to render a hook since they have to be inside a component.
+It is built on top of `renderHook` from react-testing-library.
+You can mock context values like the renderComponent helper. Below there is an example of usage:
+```
+const { hook } = renderHook(() => useSomething(args), {
+  walletProviderValue: {
+    wallet: "0xFFFF",
+  },
+});
+```
+
 - **clickOn** - used to click on something in the document. You can pass a string that represents the text of the thing you want to click (like a button)
 or you can pass a component or a query directly.
 
