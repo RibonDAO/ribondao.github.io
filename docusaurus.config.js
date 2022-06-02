@@ -64,8 +64,7 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'what-is-ribon',
+            to: 'docs/what-is-ribon',
             position: 'left',
             label: 'Get Started',
           },
