@@ -26,21 +26,21 @@ export const actions = [
     title: 'What is Ribon',
     href: '#',
     icon: InformationCircleIcon,
-    to: './protocol/introduction',
+    to: './docs/what-is-ribon',
     text: `Learn about the core concepts of the Ribon Protocol. Promoters, Integrations, Donations and more.`,
   },
   {
     title: 'Smart contract overview',
     href: '#',
     icon: BookOpenIcon,
-    to: './protocol/reference/smart-contracts',
+    to: './docs/contract/smart-contract-overview',
     text: `Learn about the architecture of the Ribon Protocol smart contracts made up of the Core and Periphery libraries.`,
   },
   {
     title: 'How to integrate with Ribon',
     href: '#',
     icon: BookOpenIcon,
-    to: './protocol/reference/smart-contracts',
+    to: './docs/what-is-ribon',
     text: `Learn how to integrate with Ribon using javascript.`,
   }
 ]
@@ -79,7 +79,7 @@ export const quick = [
   {
     title: 'Smart Contracts',
     text: 'Start swapping from a smart contract',
-    to: './protocol/reference/smart-contracts',
+    to: './docs/contract/smart-contract-overview',
   },
   {
     title: 'Whitepaper',
