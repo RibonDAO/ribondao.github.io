@@ -11,11 +11,11 @@ All write functions emit an event which is traked on the graph to easealy query 
 
 ```
   constructor(
-    address _donationToken,
+    address _governanceCouncil,
     address _integrationCouncil,
     address _nonProfitCouncil
   ) {
-    donationToken = IERC20(_donationToken);
+    governanceCouncil = _governanceCouncil;
     integrationCouncil = _integrationCouncil;
     nonProfitCouncil = _nonProfitCouncil;
   }
@@ -27,78 +27,383 @@ To deploy the contract you need to send the following parameters:
 
 | Name                | Type    | Description                                                    |
 | :------------------ | :------ | :------------------------------------------------------------- |
-| `donationToken`     | IERC20  | The contract address of the Donation Token, example USDC       |
+| `governanceCouncil` | IERC20  | The governance council multsig wallet                          |
 | `integrationCouncil`| address | The integration council multsig wallet                         |
 | `nonProfitCouncil`  | address | The non profit council multsig wallet                          |
 
+
+### createPool
+:::tip Who uses this function
+Non Profit Council
+:::
+
+```
+  function createPool(address _token) external {
+    require(msg.sender == nonProfitCouncil, "You are not the non profit council");
+    address pool = address(new Pool(_token, msg.sender));
+    pools.push(pool);
+    emit PoolCreated(pool, _token);
+  }
+```
+
+Just the non profit council multsig wallet can call this function.  
+This function add a create a pool.  
+
+#### Parameters:
+
+| Name                | Type    | Description                      |
+| :------------------ | :------ | :------------------------------- |
+| `token    `         | address  | The token that will be accepted |
+
+
+### fetchPools
+:::tip Who uses this function
+Anyone
+:::
+
+```
+  function fetchPools(uint256 _index, uint256 _length) external view returns (address[] memory _pools, uint256 _newIndex) {
+    if (_length > pools.length - _index) {
+        _length = pools.length - _index;
+    }
+
+    _pools = new address[](_length);
+    for (uint256 i = 0; i < _length; i++) {
+        _pools[i] = pools[_index + i];
+    }
+
+    return (_pools, _index + _length);
+  }
+```
+
+Anyone can call this method. You should send the length and the index to receive an array of address.
+
+#### Parameters:
+
+| Name                | Type    | Description                      |
+| :------------------ | :------ | :------------------------------- |
+| `index`             | uint256 | Index that will be the begin     |
+| `length`            | uint256 | How many pools you want          |
+
 ### addNonProfitToWhitelist
 :::tip Who uses this function
 Non Profit Council
 :::
 
 ```
-  function addNonProfitToWhitelist(address _nonProfit) public {
-    require(msg.sender == nonProfitCouncil, "You are not non profit council.");
+  function addNonProfitToWhitelist(address _pool, address _nonProfit) external {
+    require(msg.sender == nonProfitCouncil, "You are not the non profit council");
 
-    nonProfits[_nonProfit] = true;
+    IPool pool = IPool(_pool);
+    pool.addNonProfitToWhitelist(_nonProfit);
 
-    emit NonProfitAdded(_nonProfit);
+    emit NonProfitAdded(_pool, _nonProfit);
   }
 ```
 
 Just the non profit council multsig wallet can call this function.  
-This function add a non profit to the whitelist map as true, this means that this non profic can receive the project funds.  
+This function add a non profit to the whitelist map as true, this means that this non profit can receive funds in a specific pool.  
 
 #### Parameters:
 
 | Name                | Type    | Description                      |
 | :------------------ | :------ | :------------------------------- |
+| `pool`              | address  | The pool address                |
 | `nonProfit`         | address  | The non profit wallet address   |
 
-### addNonProfitToWhitelist
+### removeNonProfitToWhitelist
 :::tip Who uses this function
 Non Profit Council
 :::
 
 ```
-  function addNonProfitToWhitelist(address _nonProfit) public {
-    require(msg.sender == nonProfitCouncil, "You are not non profit council.");
+  function removeNonProfitFromWhitelist(address _pool, address _nonProfit) external {
+    require(msg.sender == nonProfitCouncil, "You are not the non profit council");
 
-    nonProfits[_nonProfit] = true;
+    IPool pool = IPool(_pool);
+    pool.removeNonProfitFromWhitelist(_nonProfit);
 
-    emit NonProfitAdded(_nonProfit);
+    emit NonProfitAdded(_pool, _nonProfit);
   }
+
 ```
 
 Just the non profit council multsig wallet can call this function.  
-This function remove a non profit to the whitelist map setting then as false, this means that this non profic can not receive the project funds.   
+This function remove a non profit from whitelist map setting as false, this means that this non profit cannot receive funds in a specific pool.  
 
 #### Parameters:
 
 | Name                | Type    | Description                      |
 | :------------------ | :------ | :------------------------------- |
+| `pool`              | address  | The pool address                |
 | `nonProfit`         | address  | The non profit wallet address   |
 
-### addDonationPoolBalance
+### addPoolBalance
 :::tip Who uses this function
 Promoter
 :::
 ```
-  function addDonationPoolBalance(uint256 _amount) public {
-    require(_amount > 0, "Amount should be bigger than 0");
+  function addPoolBalance(address _pool, uint256 _amount) external {
+    require(_amount > 0, "Amount must be greater than 0");
+    
 
-    donationToken.safeTransferFrom(msg.sender, address(this), _amount);
-    donationPoolBalance += _amount;
+    IPool pool = IPool(_pool);
+    IERC20 token = IERC20(pool.token());
+    
+    token.safeTransferFrom(msg.sender, _pool, _amount);
 
-    emit PoolBalanceIncreased(msg.sender, _amount);
+    emit PoolBalanceIncreased(msg.sender, _pool, _amount);
   }
 ```
 
 Anyone can call this function.  
-This function send the donation token from the promoter to the contract and increases the donation pool.
+This function send the donation token from the promoter to the contract and increases the specified pool.
 
 #### Parameters:
 
 | Name                | Type    | Description                                         |
 | :------------------ | :------ | :-------------------------------------------------- |
-| `amount`            | unit    | The amount of donation tokens that will be sent     |
+| `pool  `            | address | The pool address                                    |
+| `amount`            | uint256 | The amount of donation tokens that will be sent     |
+
+### addIntegrationBalance
+:::tip Who uses this function
+Integration council
+:::
+```
+  function addIntegrationBalance(address _integration, uint256 _amount)
+    external
+  {
+    require(
+      msg.sender == integrationCouncil,
+      "You are not the integration council"
+    );
+    require(_amount > 0, "Amount must be greater than 0");
+
+    integrations[_integration] += _amount;
+
+    emit IntegrationBalanceAdded(_integration, _amount);
+  }
+```
+
+Just the integration council multsig wallet can call this function.  
+This function will give the power to integration to distribute the specified amount.
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `integration  `     | address | The integration address                             |
+| `amount`            | uint256 | The amount that should be increased on balance      |
+
+### removeIntegrationBalance
+:::tip Who uses this function
+Integration council
+:::
+```
+  function removeIntegrationBalance(address _integration, uint256 _amount)
+    external
+  {
+    require(
+      msg.sender == integrationCouncil,
+      "You are not the integration council"
+    );
+    require(
+      integrations[_integration] >= _amount,
+      "Balance must be greater than amount"
+    );
+    require(_amount > 0, "Amount must be greater than 0");
+
+    integrations[_integration] -= _amount;
+
+    emit IntegrationBalanceRemoved(_integration, _amount);
+  }
+```
+
+Just the integration council multsig wallet can call this function.  
+This function send the donation token from the promoter to the contract and increases the specified pool.
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `integration  `     | address | The integration address                             |
+| `amount`            | uint256 | The amount that should be removed from balance      |
+
+### removeIntegrationBalance
+:::tip Who uses this function
+Integration council
+:::
+```
+  function removeIntegrationBalance(address _integration, uint256 _amount)
+    external
+  {
+    require(
+      msg.sender == integrationCouncil,
+      "You are not the integration council"
+    );
+    require(
+      integrations[_integration] >= _amount,
+      "Balance must be greater than amount"
+    );
+    require(_amount > 0, "Amount must be greater than 0");
+
+    integrations[_integration] -= _amount;
+
+    emit IntegrationBalanceRemoved(_integration, _amount);
+  }
+```
+
+Just the integration council multsig wallet can call this function.  
+This function send the donation token from the promoter to the contract and increases the specified pool.
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `integration  `     | address | The integration address                             |
+| `amount`            | uint256 | The amount that should be removed from balance      |
+
+### donateThroughIntegration
+:::tip Who uses this function
+Integration
+:::
+```
+  function donateThroughIntegration(
+    address _pool,
+    address _nonProfit,
+    bytes32 _user,
+    uint256 _amount
+  ) external {
+    require(
+      integrations[msg.sender] >= _amount,
+      "Balance must greater than amount"
+    );
+    require(_amount > 0, "Amount must be greater than 0");
+
+    integrations[msg.sender] -= _amount;
+
+    IPool pool = IPool(_pool);
+    pool.donateThroughIntegration(_nonProfit, msg.sender, _user, _amount);
+
+    emit DonationAdded(_pool, _user, msg.sender, _nonProfit, _amount);
+  }
+```
+
+Just the integration wallet can call this function.  
+This function send the token from the pool to the non profit stamping the user on the donation.
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `pool`              | address | The pool address                                    |
+| `nonProfit`         | address | The non profit address                              |
+| `user`              | bytes32 | The user hashed email with keccak256                |
+| `amount`            | uint256 | The amount that should be sended to the non profit  |
+
+### setNonProfitCouncil
+:::tip Who uses this function
+Governance Council
+:::
+```
+  function setNonProfitCouncil(address _nonProfitCouncil) external {
+    require(
+      msg.sender == governanceCouncil,
+      "You are not the governance council"
+    );
+
+    nonProfitCouncil = _nonProfitCouncil;
+
+    emit NonProfitCouncilChanged(nonProfitCouncil);
+  }
+```
+
+Just the governance council wallet can call this function.  
+This function change the non profit council
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `nonProfitCouncil`  | address | The new nonProfitCouncil address                    |
+
+### setIntegrationCouncil
+:::tip Who uses this function
+Governance Council
+:::
+```
+  function setIntegrationCouncil(address _integrationCouncil) external {
+    require(
+      msg.sender == governanceCouncil,
+      "You are not the governance council"
+    );
+
+    integrationCouncil = _integrationCouncil;
+
+    emit IntegrationCouncilChanged(integrationCouncil);
+  }
+```
+
+Just the governance council wallet can call this function.  
+This function change the integration council
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `integrationCouncil`| address | The new integrationCouncil address                  |
+
+### setGovernanceCouncil
+:::tip Who uses this function
+Governance Council
+:::
+```
+  function setGovernanceCouncil(address _governanceCouncil) external {
+    require(
+      msg.sender == governanceCouncil,
+      "You are not the governance council"
+    );
+
+    governanceCouncil = _governanceCouncil;
+
+    emit GovernanceCouncilChanged(governanceCouncil);
+  }
+```
+
+Just the governance council wallet can call this function.  
+This function change the governanceCouncil council
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `governanceCouncil` | address | The new governanceCouncil address                   |
+
+### transferPoolBalance
+:::tip Who uses this function
+Governance Council
+:::
+```
+  function transferPoolBalance(address _pool, address _wallet) external {
+    require(
+      msg.sender == governanceCouncil,
+      "You are not the governance council"
+    );
+
+    IPool pool = IPool(_pool);
+    pool.transferBalance(_wallet);
+
+    emit PoolBalanceTransfered(_pool, _wallet);
+  }
+```
+
+Just the governance council wallet can call this function.  
+This function move funds from the pool to the specified wallet.
+
+#### Parameters:
+
+| Name                | Type    | Description                                         |
+| :------------------ | :------ | :-------------------------------------------------- |
+| `pool`              | address | The pool address                                    |
+| `wallet`            | address | The wallet that will receive the funds              |
