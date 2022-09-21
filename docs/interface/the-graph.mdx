@@ -1,0 +1,26 @@
+---
+sidebar_position: 4
+---
+
+# The Graph
+
+To retrieve data from The Graph in the interface we use the api located inside `src/services/apiTheGraph` directory.
+In the index file are the configurations to communicate with The Graph's client. We are currently using [ApolloClient](https://github.com/apollographql/apollo-client) library to make the requests.
+
+## Creating a request
+
+In order to create a new request, you can create a new subfolder to assemble the queries and make the request for the entity mapped in the graph.
+The folder name should be the plural entity name + Api. For example, we have an entity called PromoterDonation, the name of the subfolder in the interface should be PromoterDonationsApi.
+
+You should normally use the gql and ApolloQueryResult to create a query, they can be imported from @apollo/client.
+A good file to look for an example is the following: `src\services\apiTheGraph\promoterDonationsApi\index.tsx`
+
+## Api hooks
+
+In order to organize better our requests and reuse them in multiple pages, it is a good practice to create
+api hooks that encapsulate those requests.
+
+These hooks are located at `src/hooks/apiTheGraphHooks`.
+
+We create a subfolder for each hook that can be used to call the service request and return the information of a certain entity.
+A good example of this kind of hook is the `src\hooks\apiTheGraphHooks\usePromoterDonations\index.tsx` hook. It gets information about them promoterDonations of the subgraph and returns it to the pages.

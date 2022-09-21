@@ -1,0 +1,35 @@
+---
+sidebar_position: 3
+---
+
+# Components and Pages
+Now that you already know about the main helpers in our app, we can start to think about some ways to test our components and pages.
+Remember to use the helpers when testing those components and pages.
+
+## How to test components
+
+We have a component directory in `src/components`. There you should create only components that receive props and have a state.
+They are not coupled to any hooks, contexts or application related code.
+
+You can think of this `components` directory as a library that could be copied to any other project and still work.There you normally test the behavior of your component. For example, for a `<Button />` component we could test if the props passed to it are showed in the screen
+and if it calls the right function when it is pressed.
+
+You can check the test for the `<Button />` component in the `src/components/atomics/Button/index.test.tsx` file in the project.
+It is a good reference of what to test on components.
+
+## How to test pages
+
+Normally the pages will have a group of components and an expected behavior. We tend to test the whole behavior of the page, like an integration test.
+Usually, those behaviors are:
+- The page logs an event when it is loaded or something is clicked.
+- The page makes a request to the API to get some data.
+- The page navigates to another page when something is clicked.
+- The page shows the right content (texts, titles, etc.).
+
+There is a good example using the test helpers in the `src/pages/promoters/FundPage/index.test.tsx` file. This is the test for the Treasure page of the app.
+
+## Generators
+We have some generators that helps us to create boilerplate code for components and pages. If you run `yarn generate` on the terminal you'll be prompted to choose one of those generators.
+The `Component` and `Page` generators already create a test file with the main helpers imported already for you to start.
+
+Everytime that is possible you should use the generators to create new components, pages and other things that have generators.
