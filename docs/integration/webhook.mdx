@@ -7,51 +7,68 @@ sidebar_position: 1
 ## Voucher used
 This trigger is sent everytime that a voucher is used, generally used to identify which and when a user uses a voucher.
 
-| Param                    | Info                        | Example                          |
-|--------------------------|-----------------------------|----------------------------------|
-| id                       | Voucher id                  | 1                                |
-| external_id              | External voucher identifier | 5e4dca12df7eb4f16ace41e9c9ded372 |
-| donation.id              | Donation id                 | 10                               |
-| donation.value           | Amount donated in dollars   | 15.0                             |
-| donation.non_profit.name | Non profit name             | Evidence Action                  |
-| user.id                  | Internal user identifier    | 2                                |
-| user.email               | User email                  | user@example.com                 |
+| Param                                                     | Info                               | Example                                                            |
+|-----------------------------------------------------------|------------------------------------|--------------------------------------------------------------------|
+| id                                                        | Voucher id                         | 1                                                                  |
+| external_id                                               | External voucher identifier        | 5e4dca12df7eb4f16ace41e9c9ded372                                   |
+| callback_url                                              | Url to check the transaction       | https://ribon.io/integrations/v1/vouchers/external                 |
+| donation.id                                               | Donation id                        | 10                                                                 |
+| donation.impact                                           | Donation's impact                  | 1 hour(s) of consult                                               |
+| donation.impact_value                                     | Unit of impacts                    | 1                                                                  |
+| donation.non_profit.name                                  | Non profit name                    | Evidence Action                                                    |
+| donation.non_profit.background_image                      | Non profit image url               | https://ribon.io/nonprofit-url                                     |
+| donation.non_profit.impact_by_ticket                      | Number of impact units per voucher | 1                                                                  |
+| donation.non_profit.impact_description                    | Description of impact unit         | hour(s) of consult                                                 |
+| donation.non_profit.cause.name                            | Cause name                         | Health                                                             |
+| donation.user.email                                       | User email                         | user@example.com                                                   |
+| donation.donation_blockchain_transaction.chain_id         | Chain id                           | 137                                                                |
+| donation.donation_blockchain_transaction.status           | Transaction status                 | success                                                            |
+| donation.donation_blockchain_transaction.transaction_hash | Transaction hash                   | 0x95700345291ac525c1291bdea6ddc44f08525979a17c07017cb928522a41a063 |
 
 ### Response example
 ```json
 {
-    "id":4,
-    "external_id":"5e4dca12df7eb4f16ace41e9c9ded372",
-    "donation":{
-        "id":42,
-        "value":"15.0",
-        "non_profit":{
-            "id":1, 
-            "background_image":, 
-            "cause":{
-                "id":1, 
-                "name":"Animal"
-            },
-            "cover_image":, 
-            "created_at":"2022-03-22 13:46:23 -0300", 
-            "impact_by_ticket":, 
-            "impact_description":"1 day of impact", 
-            "logo":,
-            "main_image":, 
-            "name":"Non Profit", 
-            "updated_at":"2022-09-28 13:45:33 -0300", 
-            "wallet_address":"0x6E060041D62fDd76cF27c582f62983b864878E8F"
-        },
-        "user":{
-            "id":2, 
-            "email":"nicholas@ribon.io",
-            "created_at":"2022-06-23 13:14:48 -0300",
-            "updated_at":"2022-09-26 11:42:41 -0300"
-        },
-        "created_at":"2022-09-27 09:14:17 -0300", 
-        "updated_at":"2022-09-27 09:14:17 -0300"
+  "id": 1,
+	"external_id": "5e4dca12df7eb4f16ace41e9c9ded372",
+  "callback_url": "http://ribon-core-api-dev.us-east-1.elasticbeanstalk.com/integrations/v1/vouchers/external",
+  "donation": {
+    "id": 275, 
+		"impact": "1 hour(s) of consult",
+    "impact_value": 1,
+    "non_profit": {
+      "id": 2,
+			"name": "Time to live",
+      "background_image": "http://ribon-core-api-dev.us-east-1.elasticbeanstalk.com//rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20cef27a2b7fe19188bf2f2598d0fe9ac75e05c6/post_donation.png",
+      "impact_by_ticket": 1,
+      "impact_description": "hour(s) of consult",
+      "logo": "http://ribon-core-api-dev.us-east-1.elasticbeanstalk.com//rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f804ee6fef7678025f9a2445507edf6f9c6f8074/logo.png",
+      "main_image": "http://ribon-core-api-dev.us-east-1.elasticbeanstalk.com//rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--129ce94150043f3d29c10282f17a12a391db0905/card.png",
+      "wallet_address": "0x6E060041D62fDd76cF27c582f62983b864878E8F",
+			"cause": {
+        "id": 2,
+        "name": "Health "
+      },
+			"created_at": "2022-08-08 10:24:15 -0300",
+			"updated_at": "2022-09-28 11:48:20 -0300",
     },
-    "created_at":"2022-09-29 15:31:35 -0300",
-    "updated_at":"2022-09-29 15:31:35 -0300",
+    "user": {
+      "id": 17,
+      "email": "user@example.com",
+			"created_at": "2022-08-10 13:33:11 -0300",
+      "updated_at": "2022-08-10 13:33:11 -0300"
+    },
+		"donation_blockchain_transaction": {
+      "id": 206,
+      "chain_id": 1,
+      "status": "success",
+      "transaction_hash": "0x95700345291ac525c1291bdea6ddc44f08525979a17c07017cb928522a41a063",
+			"created_at": "2022-09-30 08:33:15 -0300",
+      "updated_at": "2022-09-30 08:38:21 -0300"
+    },
+		"created_at": "2022-09-30 08:33:14 -0300",
+		"updated_at": "2022-09-30 08:33:14 -0300"
+  },
+	"created_at": "2022-09-30 08:33:14 -0300",
+  "updated_at": "2022-09-30 08:33:14 -0300"
 }
 ```
