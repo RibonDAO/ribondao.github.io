@@ -1,0 +1,25 @@
+---
+sidebar_position: 1
+---
+
+# External id
+To retrieve the information you need to send an external identifier for the donation transaction.  
+
+More than one donation per external identifier is not allowed scoped by integration.
+
+## How to send external identifier
+To send the identifier just put it as a parameter in the donation link.
+
+
+```
+https://dapp.ribon.io/?integration_id=2&external_id=12914294
+```
+
+## How to retrieve a donation from an external identifier
+To retrieve the information you need to make a request with the GET method to the following url passing the external identifier as a parameter.
+
+It's important to send a Bearer token in the header request.To get the Bearer token talk with Ribon team.
+```
+Authorization: "Bearer {integration_key}"
+https://dapp-api.ribon.io/integrations/v1/vouchers/12914294
+```
