@@ -1,0 +1,297 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.mainSection {
+  padding: 7.8125rem 0;
+  position: relative;
+}
+
+.bg img {
+  position: absolute;
+}
+.bg img:nth-child(1) {
+  top: 0;
+  left: -150px;
+}
+.bg img:nth-child(2) {
+  bottom: 180px;
+  right: 0;
+}
+
+.bg img:nth-child(3) {
+  top: -150px;
+  right: 60px;
+}
+.bg img:nth-child(4) {
+  bottom: 20px;
+  left: 30px;
+}
+
+[data-theme='dark'] {
+  .bg img:nth-child(3) {
+    z-index: -1;
+  }
+  .bg img:nth-child(4) {
+    z-index: -1;
+  }
+}
+
+.mainTitle {
+  position: relative;
+  font-family: Gambarino;
+  font-size: 7.75rem;
+  font-weight: 400;
+  line-height: 7.75rem;
+  letter-spacing: 0em;
+  text-align: center;
+  color: var(--ifm-color-text-home);
+  margin-bottom: 7.8125rem;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.3125rem;
+  margin-bottom: 3rem;
+}
+.linksContainer {
+  display: flex;
+  padding: 1.875rem 0;
+  gap: 1.5rem;
+}
+
+.containerDocs {
+  flex: 1;
+}
+.containerDocs p {
+  color: var(--ifm-paragraph-color);
+}
+.containerLinks {
+  flex: 1;
+}
+.containerLinks p {
+  color: var(--ifm-paragraph-color);
+}
+
+.containerCardSection {
+  display: flex;
+  justify-content: space-between;
+}
+.containerCardSection a:nth-child(1) {
+  z-index: 1;
+}
+
+.containerCardSection a:nth-child(3) {
+  z-index: 1;
+}
+@media (max-width: 1300px) {
+  .containerCardSection a:nth-child(2) {
+    z-index: 1;
+  }
+}
+.containerCardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cardContainer {
+  font-family: Inter Medium;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0em;
+}
+.containerQuickLinks {
+  border: 1px solid var(--ifm-border-color);
+  background-color: var(--ifm-background-quickLink);
+  margin-top: 9.25rem;
+}
+
+.quickLink a {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+[data-theme='dark'] {
+  .quickLink a {
+    color: #d4cec3;
+  }
+}
+.quickLink a:hover {
+  color: var(--ifm-link-color-hover);
+}
+.link {
+  display: flex;
+  justify-content: space-between;
+}
+.quickLinkItems {
+  height: 15.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quickLinkInfo {
+  width: 50%;
+}
+
+.link:nth-child(1) {
+  margin-bottom: 0.5rem;
+}
+.containerCardSocial {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rem 0;
+}
+
+@media (max-width: 1200px) {
+  .mainSection {
+    overflow: hidden;
+  }
+  .bg img:nth-child(1) {
+    width: 30%;
+    left: -150px;
+  }
+  .bg img:nth-child(2) {
+    right: -96px;
+    top: 158px;
+
+    width: 40%;
+  }
+  .bg img:nth-child(3) {
+    width: 60%;
+    top: -180px;
+  }
+  .bg img:nth-child(4) {
+    top: 216px;
+    left: -62px;
+    width: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  .mainTitle {
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 3.5rem;
+    letter-spacing: 0em;
+    padding: 0;
+  }
+  .linksContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerCardSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .containerCardSocial {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .bg img:nth-child(1) {
+    width: 40%;
+    // left: -100px;
+  }
+
+  .bg img:nth-child(2) {
+    top: 130px;
+    right: -100px;
+  }
+  .bg img:nth-child(3) {
+    right: -142px;
+    top: -90px;
+  }
+  .bg img:nth-child(4) {
+    width: 50%;
+    left: -40px;
+    top: 200px;
+  }
+}
+@media (max-width: 576px) {
+  .mainSection {
+    overflow: hidden;
+    padding: 5.75rem 0;
+  }
+
+  .mainTitle {
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 3.5rem;
+    letter-spacing: 0em;
+    padding: 0 1.875rem;
+    margin-bottom: 0;
+  }
+
+  .containerCardSection {
+    margin-top: 4.25rem;
+  }
+  .containerQuickLinks {
+    margin-top: 5rem;
+  }
+  .quickLinkItems {
+    img {
+      display: none;
+    }
+    .quickLinkInfo {
+      width: 100%;
+    }
+  }
+
+  .linksContainer {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .bg img:nth-child(1) {
+    width: 30%;
+    left: -80px;
+  }
+
+  .bg img:nth-child(2) {
+    width: 40%;
+    top: 160px;
+    right: -60px;
+  }
+  .bg img:nth-child(3) {
+    width: 100%;
+    left: 152px;
+    top: -85px;
+  }
+  .bg img:nth-child(4) {
+    width: 50%;
+    left: -76px;
+    top: 180px;
+  }
+}
+
+@media (max-width: 425px) {
+  .bg img:nth-child(1) {
+    width: 60%;
+    left: -80px;
+  }
+
+  .bg img:nth-child(2) {
+    width: 55%;
+    top: 225px;
+    right: -60px;
+  }
+  .bg img:nth-child(3) {
+    width: 100%;
+  }
+  .bg img:nth-child(4) {
+    width: 80%;
+    left: -76px;
+    top: 237px;
+  }
+}

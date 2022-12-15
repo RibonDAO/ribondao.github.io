@@ -1,0 +1,14 @@
+.pagination_nav_link {
+  border: 1px solid var(--ifm-color-border);
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pagination_nav_link:hover {
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.pagination_nav__sublabel {
+  margin-bottom: -8px;
+}

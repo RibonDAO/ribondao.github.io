@@ -1,0 +1,15 @@
+.footerLogoLink {
+  opacity: 0.5;
+  transition: opacity var(--ifm-transition-fast)
+    var(--ifm-transition-timing-default);
+}
+
+.footerLogoLink:hover {
+  opacity: 1;
+}
+
+.footerLogoLink img {
+  max-width: 100%;
+  position: relative;
+  top: 4.375rem;
+}

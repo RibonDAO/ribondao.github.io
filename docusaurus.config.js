@@ -1,25 +1,21 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Ribon',
-  tagline: 'Donation protocol',
+  tagline: 'Dinosaurs are cool',
   url: 'https://ribondao.github.io',
-  baseUrl: '/docs/',
+  baseUrl: '/docs',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon-ribon.png',
-  trailingSlash: false,
+  favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'RibonDAO', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
-  deploymentBranch: 'gh-pages',
+
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -28,24 +24,25 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: ['docusaurus-plugin-sass'],
+
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/docs',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/RibonDAO/docs',
+          editUrl: 'https://github.com/RibonDAO/docs',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://ribon.io/blog-en/',
+          editUrl: 'https://ribon.io/blog-en/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -57,70 +54,47 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
       navbar: {
-        title: 'Ribon',
         logo: {
           alt: 'Ribon Logo',
-          src: 'img/logo.png',
+          src: 'img/logo.svg',
+          srcDark: 'img/logoDark.svg',
+          href: '/docs',
+          target: '_self',
         },
         items: [
           {
-            to: '/docs/docs/what-is-ribon',
+            to: 'docs/what-is-ribon',
             position: 'left',
             label: 'Get Started',
           },
-          { to: 'https://ribon.io/blog-en/', label: 'Blog', position: 'left' },
+          { to: 'https://ribon.io/blog-en', label: 'Blog', position: 'left' },
           {
             href: 'https://ribon.io/wp-content/uploads/2021/08/Protocolo-Ribon-Whitepaper-v.0.2.pdf',
             label: 'Whitepaper',
             position: 'right',
           },
           {
-            href: 'https://github.com/RibonDAO/docs',
+            href: 'https://github.com/RibonDAO',
             label: 'GitHub',
             position: 'right',
           },
         ],
       },
       footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Introduction',
-                to: '/docs/docs/what-is-ribon',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord',
-                href: 'https://discord.gg/BVjycZYE4Q',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/RibonDAO',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/RibonDAO',
-              },
-            ],
-          },
-        ]
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        style: 'light',
+        logo: {
+          alt: 'Ribon Logo Footer',
+          src: 'img/ribon.svg',
+          srcDark: 'img/ribonDark.svg',
+          href: 'https://ribon.io/blog-en',
+          target: '_self',
+        },
       },
     }),
 };

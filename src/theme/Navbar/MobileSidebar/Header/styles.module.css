@@ -1,0 +1,7 @@
+.navbar_sidebar__brand {
+  justify-content: space-between;
+}
+.navbar_sidebar__brand_right {
+  display: flex;
+  align-items: center;
+}

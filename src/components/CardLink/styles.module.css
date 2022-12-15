@@ -1,0 +1,47 @@
+.cardLink {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 1.0625rem;
+  border-radius: 0.5rem;
+}
+.cardLink:hover {
+  background-color: var(--ifm-card-hover-background);
+}
+
+.cardLinkItems {
+  display: flex;
+  aling-itens: center;
+  gap: 1rem;
+}
+
+.cardLink h3 {
+  margin-bottom: 0;
+}
+
+.cardLinkLight {
+  background-color: var(--ifm-bg-card);
+}
+.cardLinkLight h3 {
+  color: var(--ifm-h3-color);
+}
+
+.cardLinkDark {
+  background-color: var(--ifm-bg-card);
+}
+
+.cardLinkDark h3 {
+  color: var(--ifm-h3-color);
+}
+.cardLinkDark:hover h3 {
+  color: var(--ifm-h3-hover-color);
+}
+
+.cardLinkDark:hover svg path {
+  fill: var(--ifm-fill-icon-dark);
+}
+
+@media (max-width: 1024px) {
+  .cardLink {
+    width: 100%;
+  }
+}
