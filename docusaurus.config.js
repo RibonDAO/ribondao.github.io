@@ -86,16 +86,6 @@ const config = {
           },
         ],
       },
-      footer: {
-        style: 'light',
-        logo: {
-          alt: 'Ribon Logo Footer',
-          src: 'img/ribon.svg',
-          srcDark: 'img/ribonDark.svg',
-          href: 'https://ribon.io/blog-en',
-          target: '_self',
-        },
-      },
     }),
 };
 

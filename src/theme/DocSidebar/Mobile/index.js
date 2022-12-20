@@ -8,8 +8,8 @@ import clsx from 'clsx';
 import React from 'react';
 
 import styles from './styles.module.css';
-// eslint-disable-next-line react/function-component-definition
-const DocSidebarMobileSecondaryMenu = ({ sidebar, path }) => {
+
+function DocSidebarMobileSecondaryMenu({ sidebar, path }) {
   const mobileSidebar = useNavbarMobileSidebar();
   return (
     <ul
@@ -35,7 +35,7 @@ const DocSidebarMobileSecondaryMenu = ({ sidebar, path }) => {
       />
     </ul>
   );
-};
+}
 function DocSidebarMobile(props) {
   return (
     <NavbarSecondaryMenuFiller
