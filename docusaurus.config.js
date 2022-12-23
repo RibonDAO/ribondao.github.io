@@ -4,7 +4,7 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Ribon',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Donation protocol',
   url: 'https://ribondao.github.io',
   baseUrl: '/docs',
   onBrokenLinks: 'throw',
