@@ -1,0 +1,32 @@
+.cardSocialItems {
+  width: 21rem;
+  display: flex;
+  padding: 0 1.875rem;
+  height: 9rem;
+  align-items: center;
+  border-radius: 0.5rem;
+  gap: 1.75rem;
+}
+.cardSocial h3 {
+  line-heigth: 1.65rem;
+  margin-bottom: 0.125rem;
+}
+.cardSocialLight h3 {
+  color: var(--ifm-h3-color);
+}
+.cardSocialLight p {
+  color: var(--ifm-paragraph-description-color);
+}
+
+.cardSocialDark h3 {
+  color: var(--ifm-h3-social-color);
+}
+.cardSocialDark p {
+  color: var(--ifm-paragraph-description-social-color);
+}
+
+@media (max-width: 992px) {
+  .cardSocialItems {
+    width: 100%;
+  }
+}

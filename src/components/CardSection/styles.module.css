@@ -1,0 +1,63 @@
+.cardSection {
+  width: 21rem;
+  height: 14.5rem;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  align-items: center;
+}
+.cardSection:hover {
+  background-color: var(--ifm-card-hover-background);
+}
+
+.cardSectionHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardSectionInfos {
+  margin-top: 3.9375rem;
+}
+.cardSectionInfos h3 {
+  margin-bottom: 1.1rem;
+  line-heigth: 1.65rem;
+}
+
+.cardSectionLight {
+  background-color: var(--ifm-bg-card);
+}
+.cardSectionLight h3 {
+  color: var(--ifm-h3-color);
+}
+.cardSectionLight p {
+  color: var(--ifm-paragraph-description-color);
+}
+.cardSectionDark {
+  background-color: var(--ifm-bg-card);
+}
+.cardSectionDark h3 {
+  color: var(--ifm-h3-color);
+}
+.cardSectionDark:hover h3 {
+  color: var(--ifm-h3-hover-color);
+}
+
+.cardSectionDark p {
+  color: var(--ifm-paragraph-description-color);
+}
+
+.cardSectionDark:hover p {
+  color: var(--ifm-paragraph-description-hover-color);
+}
+
+.cardSectionDark:hover svg path {
+  stroke: var(--ifm-fill-icon-dark);
+}
+.cardSectionDark:hover .iconRight path {
+  fill: var(--ifm-fill-icon-dark);
+}
+
+@media (max-width: 992px) {
+  .cardSection {
+    width: 100%;
+  }
+}
