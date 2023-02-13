@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      description="The giving protocol"
     >
       <main>
         <section className={styles.mainSection}>
@@ -42,14 +42,14 @@ export default function Home() {
               <CardSection
                 href="docs/category/contract"
                 iconLeft={<IconBook />}
-                title="Smart contract overview"
+                title="Smart contracts"
                 description="Learn about the architecture of the Ribon Protocol smart contracts made up of the Core and Periphery libraries."
               />
               <CardSection
                 href="docs/category/integration"
                 iconLeft={<IconBook />}
                 title="How to integrate with Ribon"
-                description="Learn how to integrate with Ribon using javascript."
+                description="Learn how to integrate with Ribon using our API."
               />
             </section>
           </Container>
@@ -67,7 +67,7 @@ export default function Home() {
                 <CardDoc
                   href="docs/what-is-ribon"
                   title="What is Ribon"
-                  description="Integrate with the Ribon Protocol using JavaScript"
+                  description="Integrate with the Ribon Protocol using our API"
                 />
               </div>{' '}
             </div>
@@ -89,10 +89,6 @@ export default function Home() {
                 <CardLink
                   href="https://github.com/RibonDAO/core-api"
                   title="core-api"
-                />
-                <CardLink
-                  href="https://github.com/Uniswap/v3-periphery/blob/main/deploys.md"
-                  title="Integration API Example"
                 />
               </div>
             </div>
