@@ -37,13 +37,13 @@ export default function Home() {
                 href="docs/what-is-ribon"
                 iconLeft={<IconInformation />}
                 title="What is Ribon"
-                description="Learn about the core concepts of the Ribon Protocol. Promoters, Integrations, Donations and more."
+                description="Learn how ribon works and how to use it."
               />
               <CardSection
                 href="docs/category/contract"
                 iconLeft={<IconBook />}
                 title="Smart contracts"
-                description="Learn about the architecture of the Ribon Protocol smart contracts made up of the Core and Periphery libraries."
+                description="Learn about the architecture of the Ribon Protocol smart contracts."
               />
               <CardSection
                 href="docs/category/integration"
@@ -61,21 +61,27 @@ export default function Home() {
               <h2>Getting Started</h2>
               <p>
                 Explore these docs to get started integrating the Ribon Protocol
-                in your dApp, smart contract or project.
+                in your project.
               </p>
               <div className={styles.containerCardDoc}>
                 <CardDoc
                   href="docs/what-is-ribon"
                   title="What is Ribon"
-                  description="Integrate with the Ribon Protocol using our API"
+                  description="Learn how ribon works and how to use it."
                 />
-              </div>{' '}
+              </div>
+              <div className={styles.containerCardDoc}>
+                <CardDoc
+                  href="docs/what-is-ribon"
+                  title="How to integrate with Ribon"
+                  description="Learn how to integrate with Ribon using our API."
+                />
+              </div>
             </div>
             <div className={styles.containerLinks}>
               <h2>Developer Links</h2>
               <p>
-                The Ribon codebase is comprised of an ecosystem of open source
-                components.
+                The Ribon codebase is open source. Take a look.
               </p>
               <div className={styles.containerCardLink}>
                 <CardLink
