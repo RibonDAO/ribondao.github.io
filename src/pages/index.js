@@ -34,13 +34,13 @@ export default function Home() {
             <h1 className={styles.mainTitle}>Welcome to the Ribon Docs</h1>
             <section className={styles.containerCardSection}>
               <CardSection
-                href="docs/what-is-ribon"
+                to="docs/what-is-ribon"
                 iconLeft={<IconInformation />}
                 title="What is Ribon"
                 description="Learn about the core concepts of the Ribon Protocol. Promoters, Integrations, Donations and more."
               />
               <CardSection
-                href="docs/category/contract"
+                to="docs/category/contract"
                 iconLeft={<IconBook />}
                 title="Smart contract overview"
                 description="Learn about the architecture of the Ribon Protocol smart contracts made up of the Core and Periphery libraries."
@@ -84,11 +84,16 @@ export default function Home() {
                 />
                 <CardLink
                   href="https://github.com/RibonDAO/interface"
-                  title="Interface"
+                  title="interface"
                 />
+                <CardLink href="https://github.com/RibonDAO/app" title="app" />
                 <CardLink
                   href="https://github.com/RibonDAO/core-api"
                   title="core-api"
+                />
+                <CardLink
+                  href="https://github.com/RibonDAO/shared"
+                  title="shared"
                 />
                 <CardLink
                   href="https://github.com/Uniswap/v3-periphery/blob/main/deploys.md"
@@ -107,7 +112,7 @@ export default function Home() {
                 <h2>Quick Links</h2>
                 <div className={styles.quickLink}>
                   <div className={styles.link}>
-                    <Link href="docs/contract/smart-contract-overview">
+                    <Link to="docs/contract/smart-contract-overview">
                       Smart Contracts
                     </Link>
                     <ExternalLink width="12" height="12" />

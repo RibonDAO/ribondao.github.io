@@ -1,6 +1,6 @@
 {
-  "label": "Api Requests",
-  "position": 6,
+  "label": "API Requests",
+  "position": 5,
   "link": {
     "type": "generated-index",
     "description": "4 minutes to learn about how we do requests to our api."

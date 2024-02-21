@@ -1,0 +1,8 @@
+{
+  "label": "Manager",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "Manager is our admin interface responsible for controlling app data"
+  }
+}

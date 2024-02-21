@@ -4,22 +4,22 @@ sidebar_position: 1
 
 # Intro to our tools
 
-Alphabetically, so it's easier to find what you're looking for  :wink:
+Alphabetically, so it's easier to find what you're looking for :wink:
 
 ## Analytics
 
-Here we use Analytics as most people do: to analyze data and get insights that help us make more informed decisions. You can learn more about it [here](https://analytics.google.com/analytics/web/provision/#/provision). 
+Here we use Analytics as most people do: to analyze data and get insights that help us make more informed decisions. You can learn more about it [here](https://analytics.google.com/analytics/web/provision/#/provision).
 
-At Ribon, we use events to keep track of users interactions with our app. On the frontend you will see many `logEvent("someEvent")` on the pages. 
-When using this, make sure each event fires only once (using `console.log()` to test it may be a good idea). 
+At Ribon, we use events to keep track of users interactions with our app. On the frontend you will see many `logEvent("someEvent")` on the pages.
+When using this, make sure each event fires only once (using `console.log()` to test it may be a good idea).
 
 To access the data related to that event, you can enter the Firebase project of the app you want to check then click on the "events" option on the bar to the left.
 
 ## AWS
 
-Amazon Web Services (AWS) is a well known cloud platform. 
-Here, we use EC2 for hosting servers that run the application's back-end (currently on Ruby on Rails), as well as some Lambda Functions in NodeJS that are used for interacting with our contract on the blockchain. 
-In addition, we use Code Pipeline for our continuous deploy (CD), and Elastic Beanstalk to join the database with the servers and host our back-end API. 
+Amazon Web Services (AWS) is a well known cloud platform.
+Here, we use EC2 for hosting servers that run the application's back-end (currently on Ruby on Rails), as well as some Lambda Functions in NodeJS that are used for interacting with our contract on the blockchain.
+In addition, we use Code Pipeline for our continuous deploy (CD), and Elastic Beanstalk to join the database with the servers and host our back-end API.
 
 If you are part of the Ribon Team, check out our Basecamp in Developers > Docs & Files > Infra > AWS. There you will be able to find Nicholas's tutorial for using these services.
 
@@ -49,4 +49,12 @@ Sendgrid is API used for sending e-mails. You can check their docs [here](https:
 
 ## Sentry
 
-We use Sentry as a tool for managing errors in our app. You can check it out at this [link](https://sentry.io/auth/login/ribon/). You can only be added to it by e-mail, so you would have to ask someone to include you there. 
+We use Sentry as a tool for managing errors in our app. You can check it out at this [link](https://sentry.io/auth/login/ribon/). You can only be added to it by e-mail, so you would have to ask someone to include you there.
+
+## Growthbook
+
+GrowthBook is an open source platform that we can customized feature flagging and A/B testing. You can check our [self-hosting](https://growthbook.ribon.io/).
+
+## Customer.IO
+
+Customer.io is the another API used for sending e-mails. You can check their docs [here](https://customer.io/docs/).

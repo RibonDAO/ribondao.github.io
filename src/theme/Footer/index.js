@@ -20,9 +20,9 @@ function Footer() {
           <div className={styles.cardLink}>
             <h3 className={styles.title}>Docs</h3>
             <div className={styles.linkFooter}>
-              <Link href="docs/what-is-ribon">What is Ribon</Link>
-              <Link href="docs/category/contract">Smar contract overview</Link>
-              <Link href="docs/category/integration">
+              <Link to="/docs/what-is-ribon">What is Ribon</Link>
+              <Link to="/docs/category/contract">Smart contract overview</Link>
+              <Link to="/docs/category/integration">
                 How to integrate with Ribon
               </Link>
               <Link href="https://ribon.io/wp-content/uploads/2021/08/Protocolo-Ribon-Whitepaper-v.0.2.pdf">
@@ -41,7 +41,9 @@ function Footer() {
               <Link href="https://github.com/RibonDAO/interface">
                 interface
               </Link>
+              <Link href="https://github.com/RibonDAO/app">app</Link>
               <Link href="https://github.com/RibonDAO/core-api">core-api</Link>
+              <Link href="https://github.com/RibonDAO/shared">shared</Link>
               <Link href="https://github.com/Uniswap/v3-periphery/blob/main/deploys.md">
                 integration API example
               </Link>

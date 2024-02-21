@@ -2,23 +2,30 @@
 sidebar_position: 1
 ---
 
-# External id
-To retrieve the information you need to send an external identifier for the donation transaction.  
+# External ID
 
-More than one donation per external identifier is not allowed scoped by integration.
+Integrations can distribute tickets to your users that can be collected via an external identifier.
 
 ## How to send external identifier
-To send the identifier just put it as a parameter in the donation link.
 
+To send the external identifier just put it as a parameter on the link.
 
 ```
 https://dapp.ribon.io/?integration_id=2&external_id=12914294
 ```
 
+To collect more than one ticket, just put a comma after first external_id, \*\*but it is only possible to collect up to 5 tickets.
+
+```
+https://dapp.ribon.io/?integration_id=2&external_id=12914294,12343243,34524534
+```
+
 ## How to retrieve a donation from an external identifier
+
 To retrieve the information you need to make a request with the GET method to the following url passing the external identifier as a parameter.
 
 It's important to send a Bearer token in the header request.To get the Bearer token talk with Ribon team.
+
 ```
 Authorization: "Bearer {integration_key}"
 https://dapp-api.ribon.io/integrations/v1/vouchers/12914294

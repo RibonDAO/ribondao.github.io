@@ -26,6 +26,6 @@ Before deploying the subgraph, you must run the "yarn codegen" command which wil
 
 - schema.ts: A class is generated for each entity and its read and write methods.
 
-## src
+## SRC
 
 Here we keep the subgraph mapping file, responsible for transforming Ethereum data into entities defined in the schema. We create a function for each event handler defined in subgraph.yaml, this is where the entity data is actually populated by calling its read and write methods.

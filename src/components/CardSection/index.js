@@ -7,19 +7,25 @@ import ExternalLink from '../../theme/Icon/ExternalLink';
 
 import styles from './styles.module.css';
 
-function CardContainer({ href, children }) {
+function CardContainer({ href, children, to }) {
   return (
-    <Link href={href} className={clsx(styles.cardContainer)}>
+    <Link to={to} href={href} className={clsx(styles.cardContainer)}>
       {children}
     </Link>
   );
 }
 
-export default function CardSection({ href, iconLeft, title, description }) {
+export default function CardSection({
+  href,
+  to,
+  iconLeft,
+  title,
+  description,
+}) {
   const { colorMode } = useColorMode();
 
   return (
-    <CardContainer href={href}>
+    <CardContainer href={href} to={to}>
       <div
         className={clsx(styles.cardSection, {
           [styles.cardSectionLight]: colorMode === 'light',

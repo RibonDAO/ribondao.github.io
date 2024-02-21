@@ -6,7 +6,7 @@ const config = {
   title: 'Ribon',
   tagline: 'Donation protocol',
   url: 'https://ribondao.github.io',
-  baseUrl: '/docs',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -34,9 +34,6 @@ const config = {
         docs: {
           routeBasePath: '/docs',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/RibonDAO/docs',
         },
         blog: {
           showReadingTime: true,
@@ -64,7 +61,7 @@ const config = {
           alt: 'Ribon Logo',
           src: 'img/logo.svg',
           srcDark: 'img/logoDark.svg',
-          href: '/docs',
+          href: '/',
           target: '_self',
         },
         items: [
