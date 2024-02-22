@@ -96,6 +96,14 @@ export default function Home() {
                   title="shared"
                 />
                 <CardLink
+                  href="https://github.com/RibonDAO/integrations-dashboard"
+                  title="integrations-dashboard"
+                />
+                <CardLink
+                  href="https://github.com/RibonDAO/patrons-dashboard"
+                  title="patrons-dashboard"
+                />
+                <CardLink
                   href="https://github.com/Uniswap/v3-periphery/blob/main/deploys.md"
                   title="Integration API Example"
                 />

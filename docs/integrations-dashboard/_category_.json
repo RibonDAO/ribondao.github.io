@@ -1,0 +1,8 @@
+{
+  "label": "Integrations Dashboard",
+  "position": 13,
+  "link": {
+    "type": "generated-index",
+    "description": "A dashboard for integrations to follow the impact generate by your users."
+  }
+}

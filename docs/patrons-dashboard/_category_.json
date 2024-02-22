@@ -1,0 +1,8 @@
+{
+  "label": "Patrons Dashboard",
+  "position": 14,
+  "link": {
+    "type": "generated-index",
+    "description": "A dashboard for patrons to follow what happens with they donation and the impact generate"
+  }
+}

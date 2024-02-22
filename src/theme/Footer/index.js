@@ -44,6 +44,12 @@ function Footer() {
               <Link href="https://github.com/RibonDAO/app">app</Link>
               <Link href="https://github.com/RibonDAO/core-api">core-api</Link>
               <Link href="https://github.com/RibonDAO/shared">shared</Link>
+              <Link href="https://github.com/RibonDAO/integrations-dashboard">
+                integrations-dashboard
+              </Link>
+              <Link href="https://github.com/RibonDAO/patrons-dashboard">
+                patrons-dashboard
+              </Link>
               <Link href="https://github.com/Uniswap/v3-periphery/blob/main/deploys.md">
                 integration API example
               </Link>
