@@ -46,7 +46,7 @@ export default function Home() {
                 description="Learn about the architecture of the Ribon Protocol smart contracts made up of the Core and Periphery libraries."
               />
               <CardSection
-                href="docs/category/integration"
+                href="docs/category/how-to-integrate-with-ribon"
                 iconLeft={<IconBook />}
                 title="How to integrate with Ribon"
                 description="Learn how to integrate with Ribon using javascript."

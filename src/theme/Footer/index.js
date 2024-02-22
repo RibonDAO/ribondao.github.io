@@ -22,7 +22,7 @@ function Footer() {
             <div className={styles.linkFooter}>
               <Link to="/docs/what-is-ribon">What is Ribon</Link>
               <Link to="/docs/category/contract">Smart contract overview</Link>
-              <Link to="/docs/category/integration">
+              <Link to="/docs/category/how-to-integrate-with-ribon">
                 How to integrate with Ribon
               </Link>
               <Link href="https://ribon.io/wp-content/uploads/2021/08/Protocolo-Ribon-Whitepaper-v.0.2.pdf">

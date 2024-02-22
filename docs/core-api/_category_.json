@@ -1,8 +1,0 @@
-{
-  "label": "Core API",
-  "position": 7,
-  "link": {
-    "type": "generated-index",
-    "description": "Core-api is our main API, it is used to manage all the core features of the platform. It is used by the webapp, the mobile app and the admin panel. It is also used by the core-api itself to communicate with the other services."
-  }
-}
