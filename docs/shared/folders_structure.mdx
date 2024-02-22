@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+---
+
+# Folders Structure
+
+## Config
+
+Here we have the testUtils:
+
+- In the testUtils we define some utilities for our tests. Mainly, we define here our factories, that are used with the objective of creating an object of a certain type, without the logic, to be used in others contexts. Click [here](https://refactoring.guru/design-patterns/factory-method) for more info about factories.
+
+## Lib
+
+Here we define some logic to be used by our components such as date formatters, functions to humanize seconds, etc.
+
+## Hooks
+
+Here we add and export the api Hooks,
+
+## Services
+
+Here we keep our api folder and other logics that are used to serve our app such as our analytics, sign in functions, etc. Another important thing that is in here is the **apiTheGraph**. For more information about The Graph, visit the reserved page for it [link](/docs/shared/the-graph).
+
+## Styles
+
+In this folder we define the global styles for all of the app. There are some important files here, that we constantly use in our daily process of coding.
+
+- typography.ts =>
+  Typography.ts defines the font-size of our headers (h1, h2, h3, ...) and paragraphs (p). If you want to implement a title that has a font-size of 20px, instead of defining the font-size in the styles of the component, **you should instead define the correspondent header that defines that font-size**.
+
+- theme =>
+  In this file, we define the colors that we use in the app, and also the breakpoints (mobile, pad, desktop) for our media-queries.
+
+## Types
+
+In the types folder, we implement the entities of the interfaces related to our business logic, enums and api responses interfaces.
+
+-
+
+## Utils
+
+We keep the abis here :)

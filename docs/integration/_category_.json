@@ -1,8 +1,8 @@
 {
-  "label": "Integration",
-  "position": 5,
+  "label": "How to integrate with Ribon",
+  "position": 13,
   "link": {
     "type": "generated-index",
-    "description": "Lear how to integrate with Ribon."
+    "description": "Learn how to integrate with Ribon."
   }
 }

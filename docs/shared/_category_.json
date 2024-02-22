@@ -1,0 +1,8 @@
+{
+  "label": "Shared",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Shared is a module to share hooks, components, and other resources between different projects."
+  }
+}
